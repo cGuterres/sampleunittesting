@@ -48,7 +48,7 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2022, 5, 8, 4, 58, 57, 52, DateTimeKind.Utc).AddTicks(6800));
+                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 15, 13, 666, DateTimeKind.Utc).AddTicks(4408));
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -68,11 +68,26 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     b.Property<DateTime>("UpdatedOn")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2022, 5, 8, 4, 58, 57, 52, DateTimeKind.Utc).AddTicks(6929));
+                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 15, 13, 666, DateTimeKind.Utc).AddTicks(4525));
 
                     b.HasKey("Id");
 
                     b.ToTable("Attendants", "SampleUnitTesting");
+                });
+
+            modelBuilder.Entity("SampleUnitTesting.Domain.AttendantCustomer", b =>
+                {
+                    b.Property<int>("AttendantId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AttendantId", "CustomerId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("AttendantCustomer", (string)null);
                 });
 
             modelBuilder.Entity("SampleUnitTesting.Domain.Customer", b =>
@@ -86,7 +101,7 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2022, 5, 8, 4, 58, 57, 52, DateTimeKind.Utc).AddTicks(7620));
+                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 15, 13, 666, DateTimeKind.Utc).AddTicks(5173));
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -106,7 +121,7 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     b.Property<DateTime>("UpdatedOn")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2022, 5, 8, 4, 58, 57, 52, DateTimeKind.Utc).AddTicks(7779));
+                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 15, 13, 666, DateTimeKind.Utc).AddTicks(5280));
 
                     b.HasKey("Id");
 
@@ -126,6 +141,35 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                         .HasForeignKey("CustomersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SampleUnitTesting.Domain.AttendantCustomer", b =>
+                {
+                    b.HasOne("SampleUnitTesting.Domain.Attendant", "Attendant")
+                        .WithMany("AttendantCustomers")
+                        .HasForeignKey("AttendantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SampleUnitTesting.Domain.Customer", "Customer")
+                        .WithMany("AttendantCustomers")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Attendant");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("SampleUnitTesting.Domain.Attendant", b =>
+                {
+                    b.Navigation("AttendantCustomers");
+                });
+
+            modelBuilder.Entity("SampleUnitTesting.Domain.Customer", b =>
+                {
+                    b.Navigation("AttendantCustomers");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,7 +16,7 @@ public sealed class SampleUnitTestingDbContext : DbContext, ISampleUnitTestingDb
 
     public DbSet<Attendant>? Attendants { get; set; }
     public DbSet<Customer>? Customers { get; set; }
-    //public DbSet<CustomerAttendant>? CustomerAttendants { get; set; }
+    public DbSet<AttendantCustomer>? AttendantCustomers { get; set; }
 
     public DbSet<T> GetDbSet<T>() where T : class
     {
@@ -27,9 +27,7 @@ public sealed class SampleUnitTestingDbContext : DbContext, ISampleUnitTestingDb
     {
         new AttendantConfiguration().Configure(modelBuilder.Entity<Attendant>());
         new CustomerConfiguration().Configure(modelBuilder.Entity<Customer>());
-        //new CustomerAttendantConfiguration().Configure(modelBuilder.Entity<CustomerAttendant>());
-
-
+        new AttendantCustomerConfiguration().Configure(modelBuilder.Entity<AttendantCustomer>());
 
         base.OnModelCreating(modelBuilder);
     }

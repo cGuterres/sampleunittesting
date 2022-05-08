@@ -17,9 +17,17 @@ namespace SampleUnitTesting.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllAsync()
+        public async Task<IActionResult> FindAllWithCustomersAsync()
         {
-            var result = await _attendantRepository.GetAllAsync();
+            var result = await _attendantRepository.FindAllWithCustomersAsync();
+
+            return Ok(result);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> FindWithCustomers([FromRoute] int id)
+        {
+            var result = await _attendantRepository.FindWithCustomersAsync(id);
 
             return Ok(result);
         }

@@ -20,5 +20,7 @@ public sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.Property(x => x.IsActive).IsRequired().HasDefaultValue(true).HasColumnType("bit");
         builder.Property(x => x.CreatedOn).ValueGeneratedOnAddOrUpdate().HasDefaultValue(DateTime.UtcNow).HasColumnType("datetime");
         builder.Property(x => x.UpdatedOn).ValueGeneratedOnAddOrUpdate().HasDefaultValue(DateTime.UtcNow).HasColumnType("datetime");
+
+        builder.HasMany(x => x.Attendants).WithMany(x => x.Customers);
     }
 }

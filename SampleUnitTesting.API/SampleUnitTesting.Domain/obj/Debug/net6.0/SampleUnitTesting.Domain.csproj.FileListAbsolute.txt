@@ -1,0 +1,12 @@
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\bin\Debug\net6.0\SampleUnitTesting.Domain.deps.json
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\bin\Debug\net6.0\SampleUnitTesting.Domain.dll
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\bin\Debug\net6.0\SampleUnitTesting.Domain.pdb
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\SampleUnitTesting.Domain.csproj.AssemblyReference.cache
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\SampleUnitTesting.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\SampleUnitTesting.Domain.AssemblyInfoInputs.cache
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\SampleUnitTesting.Domain.AssemblyInfo.cs
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\SampleUnitTesting.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\SampleUnitTesting.Domain.dll
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\refint\SampleUnitTesting.Domain.dll
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\SampleUnitTesting.Domain.pdb
+C:\Users\ChristianGuterresMar\Documents\Study\sampleunittesting\SampleUnitTesting.API\SampleUnitTesting.Domain\obj\Debug\net6.0\ref\SampleUnitTesting.Domain.dll

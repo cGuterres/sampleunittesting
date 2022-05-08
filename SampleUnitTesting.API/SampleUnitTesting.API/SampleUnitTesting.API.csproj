@@ -22,10 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SampleUnitTesting.Domain\SampleUnitTesting.Domain.csproj" />
     <ProjectReference Include="..\SampleUnitTesting.Infrastructure\SampleUnitTesting.Infrastructure.csproj" />
   </ItemGroup>

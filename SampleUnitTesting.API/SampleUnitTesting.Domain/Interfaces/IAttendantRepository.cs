@@ -2,4 +2,5 @@
 
 public interface IAttendantRepository
 {
+    Task<IEnumerable<Attendant>> GetAllAsync();
 }

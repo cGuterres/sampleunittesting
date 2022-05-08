@@ -8,5 +8,6 @@ public sealed class Attendant
     public bool IsActive { get; set; }
     public DateTime CreatedOn { get; set; }
     public DateTime UpdatedOn { get; set; }
-    public IEnumerable<CustomerAttendant> Customers { get; set; } = Enumerable.Empty<CustomerAttendant>();
+    public ICollection<Customer> Customers { get; set; } = new List<Customer>();
+    //public IEnumerable<CustomerAttendant> CustomerAttendants { get; set; } = Enumerable.Empty<CustomerAttendant>();
 }

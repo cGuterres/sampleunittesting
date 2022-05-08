@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SampleUnitTesting.Infrastructure;
 
@@ -11,9 +12,10 @@ using SampleUnitTesting.Infrastructure;
 namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
 {
     [DbContext(typeof(SampleUnitTestingDbContext))]
-    partial class SampleUnitTestingDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220508045857_DropCustomerAttendantsTable")]
+    partial class DropCustomerAttendantsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

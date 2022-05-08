@@ -10,7 +10,7 @@ public sealed class CustomerConfiguration : IEntityTypeConfiguration<Customer>
     {
         ArgumentNullException.ThrowIfNull(builder);
 
-        builder.ToTable("Customers", "SampleUnitTesting");
+        builder.ToTable("Customers");
 
         builder.HasKey(x => x.Id);
 

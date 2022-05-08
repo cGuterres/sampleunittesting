@@ -8,6 +8,5 @@ public sealed class Customer
     public bool IsActive { get; set; }
     public DateTime CreatedOn { get; set; }
     public DateTime UpdatedOn { get; set; }
-    //public ICollection<Attendant> Attendants { get; set; } = new List<Attendant>();
-    public ICollection<AttendantCustomer> AttendantCustomers { get; set; } = new List<AttendantCustomer>();
+    public ICollection<Attendant> Attendants { get; set; } = new List<Attendant>();
 }

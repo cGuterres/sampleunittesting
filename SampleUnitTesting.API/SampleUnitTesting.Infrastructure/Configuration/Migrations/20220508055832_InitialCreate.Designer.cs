@@ -12,8 +12,8 @@ using SampleUnitTesting.Infrastructure;
 namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
 {
     [DbContext(typeof(SampleUnitTestingDbContext))]
-    [Migration("20220508051513_CreateAttendantCustomersTable")]
-    partial class CreateAttendantCustomersTable
+    [Migration("20220508055832_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -36,7 +36,7 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
 
                     b.HasIndex("CustomersId");
 
-                    b.ToTable("AttendantCustomer", "SampleUnitTesting");
+                    b.ToTable("AttendantCustomer");
                 });
 
             modelBuilder.Entity("SampleUnitTesting.Domain.Attendant", b =>
@@ -50,7 +50,7 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 15, 13, 666, DateTimeKind.Utc).AddTicks(4408));
+                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 58, 31, 942, DateTimeKind.Utc).AddTicks(2732));
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -70,26 +70,11 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     b.Property<DateTime>("UpdatedOn")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 15, 13, 666, DateTimeKind.Utc).AddTicks(4525));
+                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 58, 31, 942, DateTimeKind.Utc).AddTicks(2899));
 
                     b.HasKey("Id");
 
-                    b.ToTable("Attendants", "SampleUnitTesting");
-                });
-
-            modelBuilder.Entity("SampleUnitTesting.Domain.AttendantCustomer", b =>
-                {
-                    b.Property<int>("AttendantId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AttendantId", "CustomerId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("AttendantCustomer", (string)null);
+                    b.ToTable("Attendants", (string)null);
                 });
 
             modelBuilder.Entity("SampleUnitTesting.Domain.Customer", b =>
@@ -103,7 +88,7 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 15, 13, 666, DateTimeKind.Utc).AddTicks(5173));
+                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 58, 31, 942, DateTimeKind.Utc).AddTicks(3617));
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -123,11 +108,11 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     b.Property<DateTime>("UpdatedOn")
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 15, 13, 666, DateTimeKind.Utc).AddTicks(5280));
+                        .HasDefaultValue(new DateTime(2022, 5, 8, 5, 58, 31, 942, DateTimeKind.Utc).AddTicks(3746));
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers", "SampleUnitTesting");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("AttendantCustomer", b =>
@@ -143,35 +128,6 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                         .HasForeignKey("CustomersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SampleUnitTesting.Domain.AttendantCustomer", b =>
-                {
-                    b.HasOne("SampleUnitTesting.Domain.Attendant", "Attendant")
-                        .WithMany("AttendantCustomers")
-                        .HasForeignKey("AttendantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SampleUnitTesting.Domain.Customer", "Customer")
-                        .WithMany("AttendantCustomers")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Attendant");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("SampleUnitTesting.Domain.Attendant", b =>
-                {
-                    b.Navigation("AttendantCustomers");
-                });
-
-            modelBuilder.Entity("SampleUnitTesting.Domain.Customer", b =>
-                {
-                    b.Navigation("AttendantCustomers");
                 });
 #pragma warning restore 612, 618
         }

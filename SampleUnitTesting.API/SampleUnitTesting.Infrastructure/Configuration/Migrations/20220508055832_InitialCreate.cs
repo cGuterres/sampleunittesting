@@ -9,12 +9,8 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.EnsureSchema(
-                name: "SampleUnitTesting");
-
             migrationBuilder.CreateTable(
                 name: "Attendants",
-                schema: "SampleUnitTesting",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,8 +18,8 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     FirstName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     LastName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2022, 5, 8, 4, 2, 20, 755, DateTimeKind.Utc).AddTicks(6071)),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2022, 5, 8, 4, 2, 20, 755, DateTimeKind.Utc).AddTicks(6196))
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2022, 5, 8, 5, 58, 31, 942, DateTimeKind.Utc).AddTicks(2732)),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2022, 5, 8, 5, 58, 31, 942, DateTimeKind.Utc).AddTicks(2899))
                 },
                 constraints: table =>
                 {
@@ -32,7 +28,6 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Customers",
-                schema: "SampleUnitTesting",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -40,8 +35,8 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                     FirstName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     LastName = table.Column<string>(type: "varchar(100)", maxLength: 100, nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2022, 5, 8, 4, 2, 20, 755, DateTimeKind.Utc).AddTicks(6885)),
-                    UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2022, 5, 8, 4, 2, 20, 755, DateTimeKind.Utc).AddTicks(7008))
+                    CreatedOn = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2022, 5, 8, 5, 58, 31, 942, DateTimeKind.Utc).AddTicks(3617)),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2022, 5, 8, 5, 58, 31, 942, DateTimeKind.Utc).AddTicks(3746))
                 },
                 constraints: table =>
                 {
@@ -49,52 +44,45 @@ namespace SampleUnitTesting.Infrastructure.Configuration.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CustomerAttendants",
-                schema: "SampleUnitTesting",
+                name: "AttendantCustomer",
                 columns: table => new
                 {
-                    AttendantId = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                    AttendantsId = table.Column<int>(type: "int", nullable: false),
+                    CustomersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerAttendants", x => new { x.CustomerId, x.AttendantId });
+                    table.PrimaryKey("PK_AttendantCustomer", x => new { x.AttendantsId, x.CustomersId });
                     table.ForeignKey(
-                        name: "FK_CustomerAttendants_Attendants_AttendantId",
-                        column: x => x.AttendantId,
-                        principalSchema: "SampleUnitTesting",
+                        name: "FK_AttendantCustomer_Attendants_AttendantsId",
+                        column: x => x.AttendantsId,
                         principalTable: "Attendants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CustomerAttendants_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalSchema: "SampleUnitTesting",
+                        name: "FK_AttendantCustomer_Customers_CustomersId",
+                        column: x => x.CustomersId,
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CustomerAttendants_AttendantId",
-                schema: "SampleUnitTesting",
-                table: "CustomerAttendants",
-                column: "AttendantId");
+                name: "IX_AttendantCustomer_CustomersId",
+                table: "AttendantCustomer",
+                column: "CustomersId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CustomerAttendants",
-                schema: "SampleUnitTesting");
+                name: "AttendantCustomer");
 
             migrationBuilder.DropTable(
-                name: "Attendants",
-                schema: "SampleUnitTesting");
+                name: "Attendants");
 
             migrationBuilder.DropTable(
-                name: "Customers",
-                schema: "SampleUnitTesting");
+                name: "Customers");
         }
     }
 }

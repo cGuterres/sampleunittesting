@@ -10,7 +10,7 @@ public sealed class AttendantConfiguration : IEntityTypeConfiguration<Attendant>
     {
         ArgumentNullException.ThrowIfNull(builder);
 
-        builder.ToTable("Attendants", "SampleUnitTesting");
+        builder.ToTable("Attendants");
 
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd().IsRequired().HasColumnType("int");

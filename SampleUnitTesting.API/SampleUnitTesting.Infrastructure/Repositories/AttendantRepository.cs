@@ -17,8 +17,7 @@ public sealed class AttendantRepository : IAttendantRepository
     public async Task<IEnumerable<Attendant>> GetAllAsync()
     {
         return await _context.GetDbSet<Attendant>()
-                             .Include(x => x.AttendantCustomers)
-                             .ThenInclude(x => x.Customer)
+                             .Include(x => x.Customers)
                              .ToListAsync();
     }
 }

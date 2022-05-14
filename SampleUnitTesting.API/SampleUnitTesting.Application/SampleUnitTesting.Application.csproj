@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dawn.Guard" Version="1.12.0" />
+    <PackageReference Include="OneOf" Version="3.0.216" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SampleUnitTesting.Domain\SampleUnitTesting.Domain.csproj" />
+    <ProjectReference Include="..\SampleUnitTesting.Infrastructure\SampleUnitTesting.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

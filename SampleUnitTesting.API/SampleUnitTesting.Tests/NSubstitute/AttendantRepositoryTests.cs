@@ -25,7 +25,8 @@ namespace SampleUnitTesting.Tests.NSubstitute
         public async Task FindAll_When_Success([Frozen] Mock<ISampleUnitTestingDbContext> dbContext)
         {
             // Arrange
-            var mockList = ArrangeData(10).BuildMock().BuildMockDbSet().Object;
+            var quantity = 10;
+            var mockList = ArrangeData(quantity).BuildMock().BuildMockDbSet().Object;
 
             dbContext
               .Setup(c => c.GetDbSet<Attendant>()).Returns(mockList);
@@ -40,7 +41,7 @@ namespace SampleUnitTesting.Tests.NSubstitute
             
             foreach (var item in result)
             {
-                Assert.Equal(0, item.Customers.Count);
+                Assert.Empty(item.Customers);
             }
         }
 
@@ -49,7 +50,8 @@ namespace SampleUnitTesting.Tests.NSubstitute
         public async Task FindAllWithCustomersAsync_When_Success([Frozen] Mock<ISampleUnitTestingDbContext> dbContext)
         {
             // Arrange
-            var mockList = ArrangeDataWithCustomers(10).BuildMock().BuildMockDbSet().Object;
+            var quantity = 10;
+            var mockList = ArrangeDataWithCustomers(quantity).BuildMock().BuildMockDbSet().Object;
 
             dbContext
               .Setup(c => c.GetDbSet<Attendant>()).Returns(mockList);
@@ -61,10 +63,11 @@ namespace SampleUnitTesting.Tests.NSubstitute
 
             // Assert
             Assert.Equal(mockList.Count(), result.Count());
-
+            
             foreach (var item in result)
             {
-                Assert.Equal(10, item.Customers.Count);
+                Assert.NotEmpty(item.Customers);
+                Assert.Equal(quantity, item.Customers.Count);
             }
         }
     }

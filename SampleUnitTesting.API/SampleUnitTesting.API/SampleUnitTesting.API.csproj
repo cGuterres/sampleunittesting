@@ -19,9 +19,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.3.1" />
+    <PackageReference Include="TinyMapper" Version="3.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SampleUnitTesting.Application\SampleUnitTesting.Application.csproj" />
     <ProjectReference Include="..\SampleUnitTesting.Domain\SampleUnitTesting.Domain.csproj" />
     <ProjectReference Include="..\SampleUnitTesting.Infrastructure\SampleUnitTesting.Infrastructure.csproj" />
   </ItemGroup>

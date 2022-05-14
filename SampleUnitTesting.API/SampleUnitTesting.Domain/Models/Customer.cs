@@ -1,6 +1,6 @@
 ﻿namespace SampleUnitTesting.Domain;
 
-public sealed class Customer
+public record Customer
 {
     public int Id { get; set; }
     public string? FirstName { get; set; }

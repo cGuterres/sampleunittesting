@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SampleUnitTesting.Application.UseCases;
 using SampleUnitTesting.Domain;
 using SampleUnitTesting.Infrastructure;
 
@@ -16,6 +17,14 @@ namespace SampleUnitTesting
         {
             services.AddTransient<IAttendantRepository, AttendantRepository>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddUseCases(this IServiceCollection services)
+        {
+            services.AddTransient<IGetAllAttendantsUseCase, GetAllAttendantsUseCase>();
+            services.AddTransient<IGetAttendantWithCustomersUseCase, GetAttendantWithCustomersUseCase>();
 
             return services;
         }
